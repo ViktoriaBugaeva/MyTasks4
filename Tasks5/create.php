@@ -2,14 +2,14 @@
 
 error_reporting(-1);
 ini_set('display_errors', 'On');
-require ('connect.php');
+require('connect.php');
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
 }
 if (isset($_POST['description'])){
     $description = $_POST['description'];
 }
-$userId = $_SESSION['logget_user_id'];
+$userId = $_SESSION['logged_user_id'];
 $statement = $pdo->prepare("INSERT INTO posts (name,description,id_author) VALUES ('$name','$description','$userId')");
 $statement->execute();
 if (isset($statement)) {

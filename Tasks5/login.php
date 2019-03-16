@@ -2,7 +2,7 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 require ('connect.php');
-if (isset($_POST['username']) == '') {
+if (isset($_POST['login']) == '') {
     $errors = [];
     if (trim($_POST['username']) == '') {
         $errors[] = 'Введите логин';
@@ -21,13 +21,13 @@ if (isset($_POST['username']) == '') {
         } else {
             $statement = $pdo->query("SELECT * FROM users WHERE username = '$username'");
             $posts = $statement->fetchAll();
-            // echo posts;
+            // echo $posts;
             $hesh = $posts[0]['password'];
             $userId = $posts[0]['id'];
             if (password_verify($password, $hash)) {
                 // $message = "$username, вы успешно залогинились";
                 $_SESSION['logged_user_id'] = $userId;
-                header('location: indexs.php');
+                header('location: index.php');
             } else {
                 $errors[] = 'Неверный пароль';
             }
