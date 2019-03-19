@@ -1,12 +1,9 @@
 <?php
+$editpost = $_POST['editpost'];
 
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-} else if (isset ($_POST['editpost'])) {
-    $id = $_POST['editpost'];
-} else {
-    echo 'нет ID'; 
-}
+if (isset($_POST['id'])) $id = $_POST['id'];
+else if (isset($_POST['editpost'])) $id = $_POST['editpost'];
+else echo 'нет ID';
 require ('connect.php');
 $statement = $pdo->query("SELECT * FROM posts WHERE id = '$id' ");
 $posts = $statement->fetchAll(PDO:: FETCH_ASSOC);

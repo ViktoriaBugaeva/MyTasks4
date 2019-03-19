@@ -3,7 +3,7 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 
-require ('connect.php');
+require('connect.php');
 if (isset($_POST['signup'])) {
     $errors = [];
     if (trim($_POST['username']) == '') {
@@ -12,37 +12,34 @@ if (isset($_POST['signup'])) {
     if (trim($_POST['email']) == '') {
         $errors[] = 'Введите email';
     }
-    if (trim($_POST['password1']) == '') {
+    if ($_POST['password1'] == '') {
         $errors[] = 'Введите пароль';
     }
-    if (trim($_POST['password2']) == '') {
+    if ($_POST['password2'] == '') {
         $errors[] = 'Введите пароль второй раз';
     }
-    if (trim($_POST['password1']) != $_POST['password2']) {
+    if ($_POST['password1'] != $_POST['password2']) {
         $errors[] = 'Введенные пароли не совпадают';
     }
+
     if (empty($errors)) {
         $username = $_POST['username'];
         $password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
         $email = $_POST['email'];
         $statement = $pdo->query("SELECT * FROM users WHERE username='$username'");
         $count = $statement->fetchColumn();
-        if ($count > 0) {
-            $errors[] = 'Пользователь с таким логином уже зарегистрирован, введите другой логин';
-        }
+        if ($count > 0) $errors[] = 'Пользователь с таким логином уже зарегистрирован, введите другой логин';
+
         $statement = $pdo->query("SELECT * FROM users WHERE email='$email'");
         $count = $statement->fetchColumn();
-        if ($count > 0) {
-            $errors[] = 'Пользователь с таким логином уже зарегистрирован, введите другой email';
-        } else {
+        if ($count > 0) $errors[] = 'Пользователь с таким email уже зарегистрирован, введите другой email';
+        else {
             $count = $pdo->exec("INSERT INTO users (username, password, email) VALUE ('$username', '$password', '$email')");
-            if ($count == 0) {
-                $errors[] = 'Не удалось записать пользователя в базу';
-            } else {
-                $message = 'Регистрация прошла успешно';
-            }
+            if ($count == 0) $errors[] = 'Не удалось записать пользователя в базу';
+            else $massage = 'Регистарция прошла успешно';
         }
-    }    
+
+    }
 }
 
 

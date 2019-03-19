@@ -2,7 +2,9 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 require ('connect.php');
+
 if (isset($_POST['login']) == '') {
+   //var_dump($_POST); die;
     $errors = [];
     if (trim($_POST['username']) == '') {
         $errors[] = 'Введите логин';

@@ -1,13 +1,13 @@
 <?php
 error_reporting(-1);
 ini_set('display_errors', 'On');
-require ('connect.php');
-$statement = $pdo->query("SELECT * FROM posts ");
+require('connect.php');
+$statement = $pdo->query("SELECT * FROM posts  ");
 $posts = $statement->fetchAll(PDO:: FETCH_ASSOC);
-if (isset($_SESSION['logged_user_id'])) {
-    $sessionUserId = $_SESSION['logged_user_id'];
-}
+if (isset($_SESSION['logged_user_id'])) $sessionUserId = $_SESSION['logged_user_id'];
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -46,8 +46,8 @@ if (isset($_SESSION['logged_user_id'])) {
             <div class="col-md-4 ">
                 <h2><?php echo $post["name"] ?></h2>
                 <p><?php echo $post["description"] ?></p>
-                              <p>--><?php echo $post["id_author"] ?>
-                                <p>--><?php echo $post["id"] ?>
+                <!--                <p>--><?php //echo $post["id_author"] ?><!--</p>-->
+                <!--                <p>--><?php //echo $post["id"] ?><!--</p>-->
                 <a href="#">Читать далее</a>
                 <?php if (isset($_SESSION['logged_user_id'])): ?>
                     <?php if (($_SESSION['logged_user_id'] == $post['id_author']) or ($_SESSION['logged_user_id'] == '1')): ?>
@@ -109,4 +109,3 @@ if (isset($_SESSION['logged_user_id'])) {
 </div>
 </body>
 </html>
-

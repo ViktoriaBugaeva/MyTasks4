@@ -1,22 +1,14 @@
 <?php
 
-if (isset($_POST['name'])) {
-    $name = $_POST['name'];
-}
-if (isset($_POST['description'])) {
-    $description = $_POST['description'];
-}
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-}
+if (isset($_POST['name'])) $name = $_POST['name'];
+if (isset($_POST['description'])) $description = $_POST['description'];
+if (isset($_POST['id'])) $id = $_POST['id'];
 require ('connect.php');
+//$statement = $pdo->query("UPDATE  posts SET description='$description' WHERE id='$id' ");
 
-$count = $pdo->exec("UPDATE posts SET description='$description', name='$name' WHERE' id='$id'");
-if ($count == 0) {
-    $message = 'Такой статьи нет в базе';
-    } else {
-        $message = 'Статья успешно отредактирована';
-}
+$count = $pdo->exec("UPDATE  posts SET description='$description', name='$name' WHERE id='$id'");
+if ($count == 0) $message = 'Такой статьи нет в базе';
+else $message = 'Статья успешно отредактирована';
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,4 +31,3 @@ if ($count == 0) {
 </div>
 </body>
 </html>
-

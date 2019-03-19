@@ -5,7 +5,7 @@ require ('connect.php');
 $statement = $pdo->query("SELECT * FROM posts ");
 $posts = $statement->fetchAll(PDO:: FETCH_ASSOC);
 if (isset($_SESSION['logged_user_id'])) {
-    $sessionUserId = $_SESSION['logget_user_id'];
+    $sessionUserId = $_SESSION['logged_user_id'];
 }
 ?>
 
