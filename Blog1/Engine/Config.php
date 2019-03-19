@@ -1,8 +1,13 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+namespace TestProject\Engine;
+final  class Config
+{
+    const 
+    DB_HOST = 'localhost',
+            DB_NAME = 'test3000',
+            DB_USR = 'root',
+            DB_PWD ='',
+            
+            //Title of the site
+            SITE_NAME = 'My Simple Blog!';
+}
