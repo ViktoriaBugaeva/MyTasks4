@@ -1,8 +1,9 @@
 <?php
+?>
+<?php require 'inc/header.php' ?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<h1>Page Not Found</h1>
 
+<p>Whoops! Sorry but this page doesn't seem to exost.</p>
+
+<?php require 'inc/footer.php' ?>

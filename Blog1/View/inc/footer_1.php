@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div>
             <footer>
                 <p class="italic"><strong><a href="<?=ROOT_URL?>" title="Homeage">Simple Blog</a></strong> мой пример простого Блога &nbsp; | &nbsp;
                 <?php if (!empty($_SESSION['is_logged'])): ?>

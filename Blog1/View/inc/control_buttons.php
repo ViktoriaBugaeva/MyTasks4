@@ -1,8 +1,9 @@
-<?php
+<?php if (!empty($_SESSION['is_logged'])): ?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<button type="button" onclick="window.location='<?=ROOT_URL?>?p=blog&amp:a=edit&amp:id=<?=$oPost->id?>'"
+    class="bold">Edit</button> |
+    <form action="<?ROOT_URL?>p=blog&amp;id=<?=$oPost->id?>" method="post" class="inline">
+    <button type="submit" name="delete" value="1" class="bold">Delete</button></form> |
+    <button type="button" onclick="window.location='<?=ROOT_URL?>?p=blog&amp;a=add'" class="bold">Add New Post</button>
 
+<?php endif ?>
